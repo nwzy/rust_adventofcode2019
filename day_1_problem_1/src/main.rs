@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let data = fs::read_to_string("/Users/nicolaswong/Downloads/advent_of_code/advent_day_1.txt")
+    let data = fs::read_to_string("input.txt")
         .expect("Unable to read file");
 
     let mut table: Vec<i32> = Vec::new();
