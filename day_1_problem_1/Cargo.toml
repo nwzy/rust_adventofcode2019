@@ -1,5 +1,5 @@
 [package]
-name = "d1p1"
+name = "day_1_problem_1"
 version = "0.1.0"
 authors = ["nicolaswong"]
 edition = "2018"
