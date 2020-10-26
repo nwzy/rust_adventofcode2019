@@ -1,31 +1,51 @@
 use std::fs;
 use std::io;
-use std::mem;
 
 fn main() -> io::Result<()> {
     let data = fs::read_to_string("input.txt")?;
     let data_trimmed = data.trim();
-    let mut vector_data: Vec<i8> = Vec::new();
+    let mut vector_data: Vec<i32> = Vec::new();
     let split_data = data_trimmed.split(",");
     for s in split_data {
-        let s_int: i8 = s.parse().unwrap();
+        let s_int: i32 = s.parse().unwrap();
         vector_data.push(s_int);
     }
 
-    for (i, element) in vector_data.iter().enumerate() {
+    println!("Vector input:\n {:?}\n", vector_data);
+
+    std::mem::replace(&mut vector_data[1], 12);
+    std::mem::replace(&mut vector_data[2], 2);
+
+    println!("\nMinor adjustments. New vector input:\n {:?}\n", &mut vector_data);
+
+    for i in 0..vector_data.len() {
+        let element = vector_data[i];
         match element {
-            1 => println!("index: {}, value: {}", i, element),
-            // 1 => {
-            //     let val_a: &i8 = &vector_data[i+1];
-            //     let val_b: &i8 = &vector_data[i+2];
-            //     let val_sum = val_a+val_b;
-            //     mem::replace(&mut vector_data[i+3], val_sum);
-            // },
-            2 => println!("index: {}, value: {}", i, element),
-            99 => break,
+            1 => {
+                let val_a = vector_data[i + 1];
+                let val_b = vector_data[i + 2];
+                println!("index: {}, found 1, replacing {} with {} at index {}",
+                    i, vector_data[i + 3], val_a+val_b, i+3
+                );
+                std::mem::replace(&mut vector_data[i + 3], val_a+val_b);
+            },
+            2 => {
+                let val_a = vector_data[i + 1];
+                let val_b = vector_data[i + 2];
+                println!("index: {}, found 2, replacing {} with {} at index {}",
+                    i, vector_data[i + 3], val_a*val_b, i+3
+                );
+                std::mem::replace(&mut vector_data[i + 3], val_a*val_b);
+            }
+            99 => {
+                println!("index: {}, value: 99, breaking", i);
+                break;
+            },
             _ => continue,
         }
     }
+
+    println!("\nThe new vector is:\n {:?}\n", &mut vector_data);
 
     Ok(())
 }
