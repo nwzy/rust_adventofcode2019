@@ -15,12 +15,6 @@ fn main() -> io::Result<()> {
     for (i, element) in vector_data.iter().enumerate() {
         match element {
             1 => println!("index: {}, value: {}", i, element),
-            // 1 => {
-            //     let val_a: &i8 = &vector_data[i+1];
-            //     let val_b: &i8 = &vector_data[i+2];
-            //     let val_sum = val_a+val_b;
-            //     mem::replace(&mut vector_data[i+3], val_sum);
-            // },
             2 => println!("index: {}, value: {}", i, element),
             99 => break,
             _ => continue,
@@ -29,16 +23,3 @@ fn main() -> io::Result<()> {
 
     Ok(())
 }
-
-// shepmaster way
-
-// use std::fs;
-
-// fn main() -> Result<(), Box<dyn std::error::Error>> {
-//     let data = fs::read_to_string("input.txt")?;
-//     let vector_data = data
-//         .split(",")
-//         .map(|s| s.trim().parse())
-//         .collect::<Result<Vec<i8>, _>>()?;
-//     Ok(())
-// }
