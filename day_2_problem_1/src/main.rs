@@ -30,7 +30,8 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
-// shepmaster way
+// shepmaster way of taking a file of ints as a string and converting the type
+// to ints
 
 // use std::fs;
 
@@ -42,3 +43,19 @@ fn main() -> io::Result<()> {
 //         .collect::<Result<Vec<i8>, _>>()?;
 //     Ok(())
 // }
+
+// Using indices to iterate so as to allow mutation of vector_data since you are
+// not allowed to mutate a struct that is already borrowed
+
+// for i in 0..vector_data.len() {
+//     let element = vector_data[i];
+//     match element {
+//         1 => {
+//             let val_a: i8 = vector_data[i + 1];
+//             let val_b: i8 = vector_data[i + 2];
+//             std::mem::replace(&mut vector_data[i + 3], val_a + val_b);
+//         }
+//         2 => println!("index: {}, value: {}", i, element),
+//         99 => break,
+//         _ => continue,
+//     }
