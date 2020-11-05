@@ -1,6 +1,8 @@
 use std::fs;
 use std::io;
 //use std::mem;
+// unsure if you wanted to explore std::mem and that's why you used it,
+// but it's not necessary to solve this problem
 
 fn op1(val_1:usize,val_2:usize) -> usize {
     let val_3 = val_1 + val_2;
